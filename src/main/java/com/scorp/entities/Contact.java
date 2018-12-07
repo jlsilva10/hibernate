@@ -7,18 +7,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "Contacts")
-public class Contacts {
+@Table(name = "Contact")
+public class Contact {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Integer id;
+	
+	@ManyToOne
+	@JoinColumn(name = "PHONEBOOK_ID", nullable = false)
+	private PhoneBook phonebook;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "CREATION_DATE")
@@ -77,4 +83,12 @@ public class Contacts {
 		this.phoneNumber = phoneNumber;
 	}
 
+	public PhoneBook getPhonebook() {
+		return phonebook;
+	}
+
+	public void setPhonebook(PhoneBook phonebook) {
+		this.phonebook = phonebook;
+	}
+	
 }
