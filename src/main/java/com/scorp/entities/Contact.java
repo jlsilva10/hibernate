@@ -9,21 +9,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Contact")
+@NamedQuery(name="deleteAllContacts", query="delete from Contact")
 public class Contact {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	private Integer id;
+	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name = "PHONEBOOK_ID", nullable = false)
+	@JoinColumn(name = "id", nullable = false)
 	private PhoneBook phonebook;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -89,6 +91,10 @@ public class Contact {
 
 	public void setPhonebook(PhoneBook phonebook) {
 		this.phonebook = phonebook;
+	}
+
+	public Long getId() {
+		return id;
 	}
 	
 }

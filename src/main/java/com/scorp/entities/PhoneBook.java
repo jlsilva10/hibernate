@@ -2,20 +2,27 @@ package com.scorp.entities;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MapsId;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "PHONEBOOK")
+@NamedQuery(name="deleteAllPhoneBook", query="delete from PhoneBook")
 public class PhoneBook {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Column(name = "person_id")
+	private Long id;
+	
+	@OneToOne
+	@MapsId
+	private Person person;
 	
 	@OneToMany(mappedBy = "phonebook")
 	private Set<Contact> contacts;
@@ -27,5 +34,18 @@ public class PhoneBook {
 	public void setContacts(Set<Contact> contacts) {
 		this.contacts = contacts;
 	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
 	
 }
