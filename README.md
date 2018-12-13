@@ -4,8 +4,11 @@ A simple but complete hibernate example
 # Setup:
 
 First of all create a new Schema in your MySql database
+
 Mine was: hschema
+
 Tables created:
+
 CREATE TABLE `contact` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `PHONEBOOK_ID` int(11) DEFAULT NULL,
