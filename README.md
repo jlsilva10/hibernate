@@ -58,12 +58,15 @@ CREATE TABLE `project` (
 #Relations
 
 OneToMany
+
 PhoneBook - Contact
 
 OneToOne
+
 Person - Phonebook
 
 ManyToMany
+
 Person - Project
 
 I used the above examples in order to scramble a little bit the tables and create a more complex case study.
