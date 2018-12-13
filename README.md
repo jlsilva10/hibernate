@@ -78,10 +78,15 @@ I also made the selects and deletes through hibernate using different methods so
 Take a look at the methods in the test classes:
 
 createQuery()
+
 getCriteriaBuilder()
+
 getSingleResult()
+
 createCriteriaDelete()
+
 createNativeQuery()
+
 createNamedQuery()
 
 
